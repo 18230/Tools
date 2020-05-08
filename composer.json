@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-          "devkeep\\Tools\\": "src"
+          "devkeep\\Tools\\": "src/"
         }
     },
     "minimum-stability": "dev"
