@@ -1,11 +1,5 @@
-###tools
-
-PHP常用函数集合
-
-欢迎`Star`，欢迎`Fork`！
-
 ## 功能
-- 集常见的PHP函数功能
+- 常用PHP函数集合
 
 ## 环境
 - PHP 7.0+
@@ -61,3 +55,5 @@ $res = Tools\Tools::arrayMultiSort([
 //     ['id' => 1],
 // ]
 ```
+
+欢迎`Star`，欢迎`Fork`！
