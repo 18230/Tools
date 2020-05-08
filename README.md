@@ -7,7 +7,7 @@
 
 ## 安装使用
 ```shell
-composer require devkeep/tools:dev-master
+composer require devkeep
 ```
 
 
