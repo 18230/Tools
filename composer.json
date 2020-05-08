@@ -2,7 +2,6 @@
     "name": "devkeep/tools",
     "description": "PHP常用函数集合",
     "keywords": ["tools"],
-    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -15,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-          "Tools\\": "src/"
+          "devkeep\\Tools\\": "src"
         }
     },
     "minimum-stability": "dev"

@@ -6,7 +6,7 @@
  * Date: 2020/05/08
  */
 
-namespace Tools;
+namespace devkeep\tools;
 
 class Tools
 {
