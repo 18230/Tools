@@ -19,25 +19,26 @@ composer require devkeep/tools
 ## 工具函数
 
 - 对象转数组  
-toArray
+toArray()
 
 - 无限级归类 
-tree
+tree()
 
 - 二维数组去重
-arrayMultiUnique
+arrayMultiUnique()
 
 - 二维数组排序
-arrayMultiSort
+arrayMultiSort()
 
 - 保留小数
-format
+format()
 
-GET请求
-get
+- GET请求
+get()
 
 - POST请求
-post
+post()
+
 
 ## 实例
 ```php
@@ -54,8 +55,8 @@ $res = Tools\Tools::arrayMultiSort([
 ], 'id', 'desc');
 
 // [
-//     ['id' => 1],
-//     ['id' => 2],
 //     ['id' => 3],
+//     ['id' => 2],
+//     ['id' => 1],
 // ]
 ```
