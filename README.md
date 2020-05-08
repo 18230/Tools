@@ -11,7 +11,7 @@ composer require devkeep/tools
 ```
 
 
-## 工具函数
+## 工具函数集合
 ```php
 // 对象转数组  
 toArray()
