@@ -2,6 +2,7 @@
     "name": "devkeep/tools",
     "description": "PHP常用函数集合",
     "keywords": ["tools"],
+    "homepage": "https://github.com/aiqq363927173/Tools",
     "license": "MIT",
     "authors": [
         {
