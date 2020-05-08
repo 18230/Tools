@@ -38,12 +38,12 @@ post()
 ## 实例
 ```php
 // 保留两位小数
-$res = Tools\Tools::format(100, 2);
+$res = devkeep\Tools\Tools::format(100, 2);
 
 // 100.00
 
 // 二维数组排序
-$res = Tools\Tools::arrayMultiSort([
+$res = devkeep\Tools\Tools::arrayMultiSort([
     ['id' => 1],
     ['id' => 2],
     ['id' => 3],
