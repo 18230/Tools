@@ -79,6 +79,54 @@ $res = devkeep\Tools\Tools::arrayMultiSort([
 //     ['id' => 1],
 // ]
 
+// tree归类（非递归）
+$res = devkeep\Tools\Tools::tree([
+	[
+		'id' => 1,
+		'pid' => 0,
+		'title' => 'title'
+	],
+	[
+		'id' => 3,
+		'pid' => 1,
+		'title' => 'title3'
+	],
+	[
+		'id' => 4,
+		'pid' => 1,
+		'title' => 'title4'
+	],
+]);
+
+// Array
+// (
+//     [0] => Array
+//         (
+//             [id] => 1
+//             [pid] => 0
+//             [title] => title
+//             [child] => Array
+//                 (
+//                     [0] => Array
+//                         (
+//                             [id] => 3
+//                             [pid] => 1
+//                             [title] => title3
+//                             [child] => []
+//                         )
+//                     [1] => Array
+//                         (
+//                             [id] => 4
+//                             [pid] => 1
+//                             [title] => title4
+//                             [child] => []
+//                         )
+//                 )
+//         )
+// )
+
+
+
 // 导出Excel
 devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
 	['标题一', '1.00', '1KG'],
