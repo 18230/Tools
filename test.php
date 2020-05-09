@@ -2,27 +2,27 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// 归类（非递归）
-$res = devkeep\Tools\Tools::tree([
-	[
-		'id' => 1,
-		'pid' => 0,
-		'title' => 'title'
-	],
-	[
-		'id' => 3,
-		'pid' => 1,
-		'title' => 'title'
-	],
-	[
-		'id' => 4,
-		'pid' => 1,
-		'title' => 'title'
-	],
-]);
+// // 归类（非递归）
+// $res = devkeep\Tools\Tools::tree([
+// 	[
+// 		'id' => 1,
+// 		'pid' => 0,
+// 		'title' => 'title'
+// 	],
+// 	[
+// 		'id' => 3,
+// 		'pid' => 1,
+// 		'title' => 'title'
+// 	],
+// 	[
+// 		'id' => 4,
+// 		'pid' => 1,
+// 		'title' => 'title'
+// 	],
+// ]);
 
-echo '<pre>';
-print_r($res);
+// echo '<pre>';
+// print_r($res);
 
 // // 保留两位小数
 // $res = devkeep\Tools\Tools::format(100);
