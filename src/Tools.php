@@ -354,4 +354,163 @@ class Tools
 
         exit();
     }
+
+    /**
+     * 导出excel表格
+
+     * @param array   $columName  第一行的列名称
+     * @param array   $list       二维数组
+     * @param array   $fileName   文件名称
+     * @param string  $setTitle   sheet名称
+     * @param string  $table   表单元格，用于合并
+     *
+     * @return void
+     */
+    static public function exportExcel($columName, $list, $fileName = 'demo', $setTitle = 'Sheet1', $table = [])
+    {
+        if ( empty($columName) || empty($list) )
+        {
+            return '列名或者内容不能为空';
+        }
+
+        if ( count($list[0]) != count($columName) )
+        {
+            return '列名跟数据的列不一致';
+        }
+
+        //实例化PHPExcel类
+        $PHPExcel = new \PHPExcel();
+
+        //获得当前sheet对象
+        $PHPSheet = $PHPExcel->getActiveSheet();
+
+        //定义sheet名称
+        $PHPSheet->setTitle($setTitle);
+
+        //Excel列
+        $letter = [
+            'A','B','C','D','E','F','G','H','I','J','K','L','M',
+            'N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+            'AA','AB','AC','AD','AE','AF','AG','AH','AI','AJ','AK',
+        ];
+
+        // 设置字体大小
+        $PHPSheet->getDefaultStyle()->getFont()->setSize(12);
+
+        // 水平居中
+        $PHPSheet->getDefaultStyle()->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+        // 垂直居中
+        $PHPSheet->getDefaultStyle()->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
+        // 合并单元格
+        if(count($table) > 0)
+        {
+            foreach ($table as $res)
+            {
+                $PHPSheet->mergeCells($res);
+            }
+        }
+
+        //把列名写入第1行
+        for ($i = 0; $i < count($list[0]); $i++)
+        {
+            //$letter[$i]1 = A1 B1 C1  $letter[$i] = 列1 列2 列3
+
+            // 第一行加粗
+            $PHPSheet->getStyle($letter[$i] . '1')->getFont()->setBold(true);
+
+            // 设置值
+            $PHPSheet->setCellValue("$letter[$i]1", "$columName[$i]");
+        }
+
+        //内容第2行开始
+        foreach ($list as $key => $val)
+        {
+            //array_values 把一维数组的键转为0 1 2 ..
+            foreach (array_values($val) as $key2 => $val2)
+            {
+                //$letter[$key2].($key+2) = A2 B2 C2 ……
+                $PHPSheet->setCellValue($letter[$key2] . ($key+2), $val2);
+
+                // 自动换行
+                $PHPSheet->getStyle($letter[$key2] . ($key+2))->getAlignment()->setWrapText(true);
+            }
+        }
+
+        //生成2007版本的xlsx
+        $PHPWriter = PHPExcel_IOFactory::createWriter($PHPExcel,'Excel2007');
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
+        header('Cache-Control: max-age=0');
+        $PHPWriter->save("php://output");
+    }
+
+    /**
+     * 发送邮件
+
+     * @param array  $form 发件人信息
+     * @param array  $data 收件人信息
+     *
+     * @return boolean
+     */
+    static public function sendMail($form, $data) 
+    {    
+        $mail = new \PHPMailer(true);                           // 实例化PHPMailer对象
+        $mail->CharSet = 'UTF-8';                               // 设定邮件编码，默认ISO-8859-1，如果发中文此项必须设置，否则乱码
+        $mail->isSMTP();                                        // 设定使用SMTP服务
+        $mail->SMTPDebug = 0;                                   // SMTP调试功能 0=关闭 1 = 错误和消息 2 = 消息
+        $mail->SMTPAuth = true;                                 // 启用 SMTP 验证功能
+        $mail->SMTPSecure = 'ssl';                              // 使用安全协议
+        $mail->isHTML(true);
+
+        // 发件人信息
+        $mail->Host = $form['host'];                            // SMTP 服务器
+        $mail->Port = $form['port'];                            // SMTP服务器的端口号
+        $mail->Username = $form['username'];                    // SMTP服务器用户名
+        $mail->Password = $form['password'];                    // SMTP服务器密码
+        $mail->SetFrom($form['address'], $form['title']);
+
+        // 阿里云邮箱
+        // $mail->Host = "smtp.aliyun.com";                          // SMTP 服务器
+        // $mail->Port = 465;                                        // SMTP服务器的端口号
+        // $mail->Username = "devkeep@aliyun.com";                   // SMTP服务器用户名
+        // $mail->Password = ".wang123456.";                         // SMTP服务器密码
+        // $mail->SetFrom('devkeep@aliyun.com', '项目完成通知');
+
+        // 网易邮箱
+        // $mail->Host = "smtp.163.com";                           // SMTP 服务器
+        // $mail->Port = 465;                                      // SMTP服务器的端口号
+        // $mail->Username = "devkeep@163.cc";                     // SMTP服务器用户名
+        // $mail->Password = "892123456";                          // SMTP服务器密码
+        // $mail->SetFrom('devkeep@163.cc', '系统通知');
+
+        // QQ邮箱
+        // $mail->Host = "smtp.qq.com";                            // SMTP 服务器
+        // $mail->Port = 465;                                      // SMTP服务器的端口号
+        // $mail->Username = "363927173@qq.com";                   // SMTP服务器用户名
+        // $mail->Password = "jycrscvmzgccbhhf";                   // SMTP服务器密码
+        // $mail->SetFrom('devkeep@skeep.cc', '管理系统');
+
+        // 收件人信息
+        $mail->Subject = $data['subject'];
+        $mail->MsgHTML($data['body']);
+        $mail->AddAddress($data['mail'], $data['name']);
+
+        // $mail->Subject = $subject;
+        // $mail->MsgHTML($body);
+        // $mail->AddAddress($tomail, $name);
+
+        // 是否携带附件
+        if (isset($data['attachment'])) 
+        { 
+            foreach ($attachment as $file) 
+            {
+                is_file($file) && $mail->AddAttachment($file);
+            }
+        }
+
+
+        return $mail->Send() ? true : $mail->ErrorInfo;
+    }
 }
