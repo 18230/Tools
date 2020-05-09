@@ -48,6 +48,12 @@ unZip()
 
 // 文件下载
 download()
+
+// 发送邮件
+sendMail()
+
+// 导出excel
+exportExcel()
 ```
 
 ## 实例
@@ -69,6 +75,12 @@ $res = devkeep\Tools\Tools::arrayMultiSort([
 //     ['id' => 2],
 //     ['id' => 1],
 // ]
+
+// 导出Excel
+devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
+	['标题一', '1.00', '1KG'],
+	['标题二', '2.00', '2KG'],
+], 'abc');
 ```
 
 欢迎`Star`，欢迎`Fork`！
