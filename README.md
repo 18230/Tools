@@ -33,6 +33,21 @@ get()
 
 // POST请求
 post()
+
+// 数组转XML
+arrayToXml()
+
+// XML转数组
+xmlToArray()
+
+// 文件打包下载
+addZip()
+
+// 压缩包解压
+unZip()
+
+// 文件下载
+download()
 ```
 
 ## 实例
