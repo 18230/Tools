@@ -513,4 +513,23 @@ class Tools
 
         return $mail->Send() ? true : $mail->ErrorInfo;
     }
+
+    /**
+     * 生成二维码
+
+     * @param array  $text 二维码内容
+     * @param array  $outfile 文件
+     * @param array  $level 纠错级别
+     * @param array  $size 二维码大小
+     * @param array  $margin 边距
+     * @param array  $saveandprint
+     *
+     * @return void
+     */
+    static public function qrcode($text, $outfile = false, $level = QR_ECLEVEL_L, $size = 6, $margin = 2, $saveandprint = false)
+    {
+        QRcode::png($text, $outfile, $level, $size, $margin, $saveandprint);
+
+        exit();
+    }
 }

@@ -54,6 +54,9 @@ sendMail()
 
 // 导出excel
 exportExcel()
+
+// 生成二维码
+qrcode();
 ```
 
 ## 实例
@@ -81,6 +84,25 @@ devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
 	['标题一', '1.00', '1KG'],
 	['标题二', '2.00', '2KG'],
 ], 'abc');
+
+// 生成二维码
+devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
+
+// 发送邮件
+$res = devkeep\Tools\Tools::sendMail([
+	'host' => 'smtp.aliyun.com',
+	'port' => 465,
+	'username' => 'devkeep@aliyun.com',
+	'password' => 'xxxx',
+	'address' => 'devkeep@aliyun.com',
+	'title' => '测试邮件',
+], [
+	'mail' => '363927173@qq.com',
+	'name' => '张三',
+	'subject' => '主题',
+	'body' => '这是一个邮件'
+]);
+var_dump($res);
 ```
 
 欢迎`Star`，欢迎`Fork`！
