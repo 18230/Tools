@@ -35,7 +35,7 @@ require __DIR__ . '/vendor/autoload.php';
 // 	'host' => 'smtp.aliyun.com',
 // 	'port' => 465,
 // 	'username' => 'devkeep@aliyun.com',
-// 	'password' => '.wang123456.',
+// 	'password' => 'xxxx',
 // 	'address' => 'devkeep@aliyun.com',
 // 	'title' => '测试邮件',
 // ], [
@@ -47,7 +47,7 @@ require __DIR__ . '/vendor/autoload.php';
 // var_dump($res);
 
 // 导出Excel
-devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
-	['标题一', '1.00', '1KG'],
-	['标题二', '2.00', '2KG'],
-], 'abc');
+// devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
+// 	['标题一', '1.00', '1KG'],
+// 	['标题二', '2.00', '2KG'],
+// ], 'abc');
