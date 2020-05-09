@@ -12,12 +12,12 @@
     ],
     "require": {
         "php": ">=5.6.0",
-        "phpoffice/phpexcel": "^1.8",
+        "phpoffice/phpexcel": "1.8.2",
         "phpmailer/phpmailer": "6.1.5"
     },
     "autoload": {
         "psr-4": {
-          "devkeep\\Tools\\": "src/"
+            "devkeep\\Tools\\": "src/"
         }
     },
     "minimum-stability": "dev"

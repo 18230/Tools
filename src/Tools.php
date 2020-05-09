@@ -398,10 +398,10 @@ class Tools
         $PHPSheet->getDefaultStyle()->getFont()->setSize(12);
 
         // 水平居中
-        $PHPSheet->getDefaultStyle()->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $PHPSheet->getDefaultStyle()->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
         // 垂直居中
-        $PHPSheet->getDefaultStyle()->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        $PHPSheet->getDefaultStyle()->getAlignment()->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
         // 合并单元格
         if(count($table) > 0)
@@ -439,7 +439,7 @@ class Tools
         }
 
         //生成2007版本的xlsx
-        $PHPWriter = PHPExcel_IOFactory::createWriter($PHPExcel,'Excel2007');
+        $PHPWriter = \PHPExcel_IOFactory::createWriter($PHPExcel,'Excel2007');
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         header('Content-Disposition: attachment;filename='.$fileName.'.xlsx');
         header('Cache-Control: max-age=0');
@@ -456,7 +456,7 @@ class Tools
      */
     static public function sendMail($form, $data) 
     {    
-        $mail = new \PHPMailer(true);                           // 实例化PHPMailer对象
+        $mail = new \PHPMailer\PHPMailer\PHPMailer(true);       // 实例化PHPMailer对象
         $mail->CharSet = 'UTF-8';                               // 设定邮件编码，默认ISO-8859-1，如果发中文此项必须设置，否则乱码
         $mail->isSMTP();                                        // 设定使用SMTP服务
         $mail->SMTPDebug = 0;                                   // SMTP调试功能 0=关闭 1 = 错误和消息 2 = 消息
@@ -475,21 +475,21 @@ class Tools
         // $mail->Host = "smtp.aliyun.com";                          // SMTP 服务器
         // $mail->Port = 465;                                        // SMTP服务器的端口号
         // $mail->Username = "devkeep@aliyun.com";                   // SMTP服务器用户名
-        // $mail->Password = ".wang123456.";                         // SMTP服务器密码
+        // $mail->Password = "xxxxxxxxxxxx";                         // SMTP服务器密码
         // $mail->SetFrom('devkeep@aliyun.com', '项目完成通知');
 
         // 网易邮箱
         // $mail->Host = "smtp.163.com";                           // SMTP 服务器
         // $mail->Port = 465;                                      // SMTP服务器的端口号
         // $mail->Username = "devkeep@163.cc";                     // SMTP服务器用户名
-        // $mail->Password = "892123456";                          // SMTP服务器密码
+        // $mail->Password = "xxxxxxxxx";                          // SMTP服务器密码
         // $mail->SetFrom('devkeep@163.cc', '系统通知');
 
         // QQ邮箱
         // $mail->Host = "smtp.qq.com";                            // SMTP 服务器
         // $mail->Port = 465;                                      // SMTP服务器的端口号
         // $mail->Username = "363927173@qq.com";                   // SMTP服务器用户名
-        // $mail->Password = "jycrscvmzgccbhhf";                   // SMTP服务器密码
+        // $mail->Password = "xxxxxxxxxxxxxxxx";                   // SMTP服务器密码
         // $mail->SetFrom('devkeep@skeep.cc', '管理系统');
 
         // 收件人信息
