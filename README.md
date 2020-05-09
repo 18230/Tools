@@ -14,49 +14,49 @@ composer require devkeep/tools
 ## 工具函数集合
 ```php
 // 对象转数组  
-toArray()
+devkeep\Tools\Tools::toArray()
 
 // 无限级归类 
-tree()
+devkeep\Tools\Tools::tree()
 
 // 二维数组去重
-arrayMultiUnique()
+devkeep\Tools\Tools::arrayMultiUnique()
 
 // 二维数组排序
-arrayMultiSort()
+devkeep\Tools\Tools::arrayMultiSort()
 
 // 保留小数
-format()
+devkeep\Tools\Tools::format()
 
 // GET请求
-get()
+devkeep\Tools\Tools::get()
 
 // POST请求
-post()
+devkeep\Tools\Tools::post()
 
 // 数组转XML
-arrayToXml()
+devkeep\Tools\Tools::arrayToXml()
 
 // XML转数组
-xmlToArray()
+devkeep\Tools\Tools::xmlToArray()
 
 // 文件打包下载
-addZip()
+devkeep\Tools\Tools::addZip()
 
 // 压缩包解压
-unZip()
+devkeep\Tools\Tools::unZip()
 
 // 文件下载
-download()
+devkeep\Tools\Tools::download()
 
 // 发送邮件
-sendMail()
+devkeep\Tools\Tools::sendMail()
 
 // 导出excel
-exportExcel()
+devkeep\Tools\Tools::exportExcel()
 
 // 生成二维码
-qrcode();
+devkeep\Tools\Tools::qrcode();
 ```
 
 ## 实例
