@@ -11,6 +11,23 @@ namespace devkeep\Tools;
 class Tools
 {
     /**
+     * 获取系统类型
+     *
+     * @return string
+     */
+    static public function getOS() 
+    {
+        if(PATH_SEPARATOR == ':')
+        {
+            return 'Linux';
+        }
+        else
+        {
+            return 'Windows';
+        }
+    }
+
+    /**
      * 对象转数组
      *
      * @param object $object 对象

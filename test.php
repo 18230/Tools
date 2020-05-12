@@ -68,11 +68,14 @@ require __DIR__ . '/vendor/autoload.php';
 // ]);
 // var_dump($res);
 
-// 导出Excel
+// // 导出Excel
 // devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
 // 	['标题一', '1.00', '1KG'],
 // 	['标题二', '2.00', '2KG'],
 // ], 'abc');
 
-// 生成二维码
+// // 生成二维码
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
+
+// // 获取系统类型
+// devkeep\Tools\Tools::getOS();

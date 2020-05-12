@@ -17,6 +17,9 @@ composer require devkeep/tools
 
 ## 工具函数集合
 ```php
+// 获取系统类型
+devkeep\Tools\Tools::getOS()
+
 // 对象转数组  
 devkeep\Tools\Tools::toArray()
 
