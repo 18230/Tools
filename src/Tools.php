@@ -43,7 +43,7 @@ class Tools
     /**
      * 无限级归类
      *
-     * @param array $list 归类数组
+     * @param array $list 归类的数组
      * @param string $id 父级ID
      * @param string $pid 父级PID
      * @param string $child key
