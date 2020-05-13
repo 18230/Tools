@@ -32,10 +32,10 @@ devkeep\Tools\Tools::arrayMultiSort()
 // 保留小数
 devkeep\Tools\Tools::format()
 
-// GET请求
+// GET请求(curl扩展)
 devkeep\Tools\Tools::get()
 
-// POST请求
+// POST请求(curl扩展)
 devkeep\Tools\Tools::post()
 
 // 数组转XML
