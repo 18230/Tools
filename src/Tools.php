@@ -30,8 +30,8 @@ class Tools
     /**
      * 对象转数组
      *
+     * @access public
      * @param object $object 对象
-     *
      * @return array
      */
     static public function toArray($object)
@@ -42,6 +42,7 @@ class Tools
     /**
      * 无限级归类
      *
+     * @access public
      * @param array $list 归类数组
      * @param string $id 父级ID
      * @param string $pid 父级PID
@@ -90,6 +91,7 @@ class Tools
     /**
      * 二维数组去重
      *
+     * @access public
      * @param array $arr 数组
      * @param string $key 字段
      *
