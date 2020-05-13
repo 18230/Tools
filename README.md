@@ -157,4 +157,4 @@ $res = devkeep\Tools\Tools::sendMail([
 var_dump($res);
 ```
 
-欢迎`Star`，欢迎`Fork`！
+欢迎`Star`，欢迎`Fork`
