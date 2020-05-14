@@ -53,7 +53,8 @@ require __DIR__ . '/vendor/autoload.php';
 // print_r($res);
 
 // // 保留两位小数
-// $res = devkeep\Tools\Tools::format(100);
+// $res = devkeep\Tools\Tools::format(100, 2);
+// // 100.00
 
 // // 二维数组排序
 // $res = devkeep\Tools\Tools::arrayMultiSort([
@@ -102,5 +103,5 @@ require __DIR__ . '/vendor/autoload.php';
 // 	['标题二', '2.00', '2KG'],
 // ], 'abc');
 
-// // 生成二维码
+// // 生成二维码(第二个参数可选，输出或保存)
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
