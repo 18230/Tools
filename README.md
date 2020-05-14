@@ -67,6 +67,9 @@ devkeep\Tools\Tools::qrcode();
 ```
 
 ## 实例
+
+- 更多使用请参照test用例
+
 ```php
 // 保留两位小数
 $res = devkeep\Tools\Tools::format(100, 2);
@@ -159,7 +162,5 @@ $res = devkeep\Tools\Tools::sendMail([
 ]);
 var_dump($res);
 ```
-
-- 更多使用请参照test用例
 
 欢迎`Star`，欢迎`Fork`
