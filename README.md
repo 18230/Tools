@@ -71,7 +71,7 @@ devkeep\Tools\Tools::qrcode();
 - 更多使用请参照test用例
 
 ```php
-// 保留小数(默认2位)
+// 保留小数
 $res = devkeep\Tools\Tools::format(100, 2);
 
 // 100.00
