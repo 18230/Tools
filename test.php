@@ -67,7 +67,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 // // 文件打包
 // $zip = time().'.zip';
-// devkeep\Tools\Tools::unZip('1588999596.zip', [
+// devkeep\Tools\Tools::addZip('1588999596.zip', [
 // 	'G:\Github\Tools\images\a\b\1.png',
 // 	'G:\Github\Tools\images\a\b\2.png'
 // ]);
