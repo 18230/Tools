@@ -89,6 +89,35 @@ class Tools
     }
 
     /**
+     * 排列组合
+     * 
+     * @param array $input 排列的数组
+     * 
+     * @return array
+     */
+    static public function arrayArrange($input) 
+    {
+        $temp = [];
+        $result = array_shift($input);
+
+        while($item = array_shift($input))
+        {
+           $temp = $result;
+           $result = [];
+
+           foreach($temp as $v)
+           {
+                foreach($item as $val)
+                {
+                    $result[] = array_merge_recursive($v, $val);
+                }
+           }
+        }
+
+        return $result;
+    }
+
+    /**
      * 二维数组去重
      *
      * @param array $arr 数组

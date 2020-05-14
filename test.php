@@ -2,6 +2,9 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+// // 获取系统类型
+// devkeep\Tools\Tools::getOS();
+
 // // 归类（非递归）
 // $res = devkeep\Tools\Tools::tree([
 // 	[
@@ -20,6 +23,31 @@ require __DIR__ . '/vendor/autoload.php';
 // 		'title' => 'title'
 // 	],
 // ]);
+
+// 排列组合（适用多规格商品SKU生成）
+// $res = devkeep\Tools\Tools::arrayArrange([
+//     [
+//         ['id' => 1, 'name' => '红色'],
+//         ['id' => 2, 'name' => '黑色'],
+//         ['id' => 3, 'name' => '蓝色'],
+//     ],
+//     [
+//         ['id' => 4, 'name' => '32G'],
+//         ['id' => 5, 'name' => '64G'],
+//     ],
+//     [
+//         ['id' => 6, 'name' => '移动版'],
+//         ['id' => 7, 'name' => '联通版'],   
+//     ]
+// ]);
+
+// [
+// 	'id'=>[1,4,6], 'name' => [红色,32G,移动版]
+// 	'id'=>[1,4,7], 'name' => [红色,32G,联通版]
+// 	'id'=>[1,5,6], 'name' => [红色,64G,移动版]
+// 	'id'=>[1,5,7], 'name' => [红色,64G,联通版]
+// 	...
+// ]
 
 // echo '<pre>';
 // print_r($res);
@@ -76,6 +104,3 @@ require __DIR__ . '/vendor/autoload.php';
 
 // // 生成二维码
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
-
-// // 获取系统类型
-// devkeep\Tools\Tools::getOS();

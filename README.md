@@ -23,6 +23,9 @@ devkeep\Tools\Tools::toArray()
 // 无限级归类 
 devkeep\Tools\Tools::tree()
 
+// 排列组合（适用多规格SKU生成）
+devkeep\Tools\Tools::arrayArrange()
+
 // 二维数组去重
 devkeep\Tools\Tools::arrayMultiUnique()
 
@@ -156,4 +159,7 @@ $res = devkeep\Tools\Tools::sendMail([
 ]);
 var_dump($res);
 ```
+
+- 更多使用请参照test用例
+
 欢迎`Star`，欢迎`Fork`
