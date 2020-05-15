@@ -17,6 +17,9 @@ composer require devkeep/tools
 // 获取系统类型
 devkeep\Tools\Tools::getOS()
 
+// 保留小数
+devkeep\Tools\Tools::format()
+
 // 对象转数组  
 devkeep\Tools\Tools::toArray()
 
@@ -32,20 +35,17 @@ devkeep\Tools\Tools::arrayMultiUnique()
 // 二维数组排序
 devkeep\Tools\Tools::arrayMultiSort()
 
-// 保留小数
-devkeep\Tools\Tools::format()
-
-// GET请求(curl扩展)
-devkeep\Tools\Tools::get()
-
-// POST请求(curl扩展)
-devkeep\Tools\Tools::post()
-
 // 数组转XML
 devkeep\Tools\Tools::arrayToXml()
 
 // XML转数组
 devkeep\Tools\Tools::xmlToArray()
+
+// GET请求
+devkeep\Tools\Tools::get()
+
+// POST请求
+devkeep\Tools\Tools::post()
 
 // 文件打包下载
 devkeep\Tools\Tools::addZip()
@@ -56,11 +56,11 @@ devkeep\Tools\Tools::unZip()
 // 文件下载
 devkeep\Tools\Tools::download()
 
-// 发送邮件
-devkeep\Tools\Tools::sendMail()
-
 // 导出excel
 devkeep\Tools\Tools::exportExcel()
+
+// 发送邮件
+devkeep\Tools\Tools::sendMail()
 
 // 生成二维码
 devkeep\Tools\Tools::qrcode();

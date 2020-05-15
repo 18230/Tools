@@ -6,6 +6,7 @@
  * @license http://www.apache.org/licenses/LICENSE-2.0
  * @copyright The PHP-Tools
  */
+declare(strict_types = 1);
 
 namespace devkeep\Tools;
 
@@ -16,7 +17,7 @@ class Tools
      *
      * @return string
      */
-    static public function getOS() 
+    static public function getOS(): string
     {
         if(PATH_SEPARATOR == ':')
         {
@@ -29,13 +30,26 @@ class Tools
     }
 
     /**
+     * format 保留两位小数
+     *
+     * @param int $input 数值
+     * @param int $number 小数位数
+     *
+     * @return string
+     */
+    static public function format(int $input, int $number = 2): string
+    {
+        return sprintf("%." . $number . "f", $input);
+    }
+
+    /**
      * 对象转数组
      *
      * @param object $object 对象
      * 
      * @return array
      */
-    static public function toArray($object)
+    static public function toArray(object $object): array
     {
         return json_decode(json_encode($object), true);
     }
@@ -51,7 +65,7 @@ class Tools
      *
      * @return array
      */
-    static public function tree($list, $pk = 'id', $pid = 'pid', $child = 'child', $root = 0)
+    static public function tree(array $list, string $pk = 'id', string $pid = 'pid', string $child = 'child', int $root = 0): array
     {
         $tree = [];
 
@@ -95,7 +109,7 @@ class Tools
      * 
      * @return array
      */
-    static public function arrayArrange($input) 
+    static public function arrayArrange(array $input): array
     {
         $temp = [];
         $result = array_shift($input);
@@ -125,7 +139,7 @@ class Tools
      *
      * @return array
      */
-    static public function arrayMultiUnique($arr, $key = 'id')
+    static public function arrayMultiUnique(array $arr, string $key = 'id'): array
     {
         $res = [];
 
@@ -141,43 +155,6 @@ class Tools
     }
 
     /**
-     * XML转数组
-     *
-     * @param string $xml xml
-     *
-     * @return array
-     */
-    static public function xmlToArray($xml)
-    {
-        //禁止引用外部xml实体
-        libxml_disable_entity_loader(true);
-        $xmlString = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
-        $result = json_decode(json_encode($xmlString), true);
-        return $result;
-    }
-
-    /**
-     * 数组转XML
-     *
-     * @param array $input 数组
-     *
-     * @return string
-     */
-    static public function arrayToXml($input)
-    {
-        $str = '<xml>';
-
-        foreach ($input as $k => $v)
-        {
-            $str .= '<' . $k . '>' . $v . '</' . $k . '>';
-        }
-
-        $str .= '</xml>';
-
-        return $str;
-    }
-
-    /**
      * 二维数组排序
      *
      * @param array $array 排序的数组
@@ -186,7 +163,7 @@ class Tools
      *
      * @return array
      */
-    static public function arrayMultiSort($array, $keys, $sort = 'desc')
+    static public function arrayMultiSort(array $array, string $keys, string $sort = 'desc'): array
     {
         $keysValue = [];
 
@@ -206,16 +183,40 @@ class Tools
     }
 
     /**
-     * format 保留两位小数
+     * XML转数组
      *
-     * @param int $input 数值
-     * @param int $number 小数位数
+     * @param string $xml xml
      *
-     * @return float
+     * @return array
      */
-    static public function format($input, $number = 2)
+    static public function xmlToArray(string $xml): array
     {
-        return sprintf("%." . $number . "f", $input);
+        //禁止引用外部xml实体
+        libxml_disable_entity_loader(true);
+        $xmlString = simplexml_load_string($xml, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $result = json_decode(json_encode($xmlString), true);
+        return $result;
+    }
+
+    /**
+     * 数组转XML
+     *
+     * @param array $input 数组
+     *
+     * @return string
+     */
+    static public function arrayToXml(array $input): string
+    {
+        $str = '<xml>';
+
+        foreach ($input as $k => $v)
+        {
+            $str .= '<' . $k . '>' . $v . '</' . $k . '>';
+        }
+
+        $str .= '</xml>';
+
+        return $str;
     }
 
     /**
@@ -224,7 +225,7 @@ class Tools
      * @param string $url URL地址
      * @param string $header header头
      *
-     * @return string
+     * @return mixed
      */
     static public function get(string $url, $header = null)
     {
@@ -252,9 +253,9 @@ class Tools
      * @param string $param 参数
      * @param string $dataType 数据类型
      *
-     * @return string
+     * @return mixed
      */
-    static public function post($url, $param = '', $dataType = 'form')
+    static public function post(string $url, $param = '', string $dataType = 'form')
     {
         $dataTypeArr = [
             'form' => ['content-type: application/x-www-form-urlencoded;charset=UTF-8'],
@@ -287,7 +288,7 @@ class Tools
 
      * @return void
      */
-    static public function addZip($downloadZip, $list)
+    static public function addZip(string $downloadZip, array $list)
     {
         // 初始化Zip并打开
         $zip = new \ZipArchive();
@@ -335,7 +336,7 @@ class Tools
 
      * @return boolean
      */
-    static public function unZip($zipName, $dest)
+    static public function unZip(string $zipName, string $dest): bool
     {
         //检测要解压压缩包是否存在
         if(!is_file($zipName))
@@ -373,30 +374,27 @@ class Tools
 
      * @return void
      */
-    static public function download($filename, $refilename = null)
+    static public function download(string $filename, $refilename = null)
     {
         if(!is_file($filename)||!is_readable($filename)) 
         {
             return false;
         }
 
-        //通过header()发送头信息
-        //告诉浏览器输出的是字节流
+        // 字节流
         header('Content-Type:application/octet-stream');
- 
-        //告诉浏览器返回的文件大小是按照字节进行计算的
         header('Accept-Ranges: bytes');
  
-        //告诉浏览器返回的文件大小
+        // 文件大小
         header('Accept-Length: '.filesize($filename));
 
         // 文件重命名
         !isset($refilename) && $refilename = $filename;
  
-        //告诉浏览器文件作为附件处理，告诉浏览器最终下载完的文件名称
+        // 重命名
         header('Content-Disposition: attachment;filename='.basename($refilename));
  
-        //读取文件中的内容
+        // 读取内容
         readfile($filename);
 
         exit();
@@ -413,7 +411,7 @@ class Tools
      *
      * @return void
      */
-    static public function exportExcel($columName, $list, $fileName = 'demo', $setTitle = 'Sheet1', $table = [])
+    static public function exportExcel(array $columName, array $list, string $fileName = 'demo', string $setTitle = 'Sheet1', array $table = [])
     {
         if ( empty($columName) || empty($list) )
         {
@@ -499,9 +497,9 @@ class Tools
      * @param array  $form 发件人信息
      * @param array  $data 收件人信息
      *
-     * @return boolean
+     * @return mixed
      */
-    static public function sendMail($form, $data) 
+    static public function sendMail(array $form, array $data) 
     {    
         $mail = new \PHPMailer\PHPMailer\PHPMailer(true);       // 实例化PHPMailer对象
         $mail->CharSet = 'UTF-8';                               // 设定邮件编码，默认ISO-8859-1，如果发中文此项必须设置，否则乱码
@@ -573,7 +571,7 @@ class Tools
      *
      * @return void
      */
-    static public function qrcode($text, $outfile = false, $level = QR_ECLEVEL_L, $size = 6, $margin = 2, $saveandprint = false)
+    static public function qrcode(string $text, $outfile = false, string $level = QR_ECLEVEL_L, int $size = 6, int $margin = 2, bool $saveandprint = false)
     {
         QRcode::png($text, $outfile, $level, $size, $margin, $saveandprint);
 

@@ -3,9 +3,22 @@
 require __DIR__ . '/vendor/autoload.php';
 
 // // 获取系统类型
-// devkeep\Tools\Tools::getOS();
+// $res = devkeep\Tools\Tools::getOS();
+// var_dump($res);
 
-// // 归类（非递归）
+// 保留两位小数
+// $res = devkeep\Tools\Tools::format(100, 2);
+// var_dump($res);
+ 
+// 对象转数组
+// $obj = new stdClass;  
+// $obj->foo = "foo";  
+// $obj->bar = "bar"; 
+// $res = devkeep\Tools\Tools::toArray($obj);
+// echo '<pre>';
+// print_r($res);
+
+// 归类（非递归）
 // $res = devkeep\Tools\Tools::tree([
 // 	[
 // 		'id' => 1,
@@ -23,6 +36,8 @@ require __DIR__ . '/vendor/autoload.php';
 // 		'title' => 'title'
 // 	],
 // ]);
+// echo '<pre>';
+// print_r($res);
 
 // 排列组合（适用多规格商品SKU生成）
 // $res = devkeep\Tools\Tools::arrayArrange([
@@ -48,23 +63,17 @@ require __DIR__ . '/vendor/autoload.php';
 // 	'id'=>[1,5,7], 'name' => [红色,64G,联通版]
 // 	...
 // ]
-
+// 
 // echo '<pre>';
 // print_r($res);
 
-// // 保留两位小数
-// $res = devkeep\Tools\Tools::format(100, 2);
-// // 100.00
-
-// // 二维数组排序
+// 二维数组排序
 // $res = devkeep\Tools\Tools::arrayMultiSort([
 //     ['id' => 1],
 //     ['id' => 2],
 //     ['id' => 3],
-// ], 'id', 'asc');
-
+// ], 'id', 'desc');
 // var_dump($res);
-
 
 // // 文件打包
 // $zip = time().'.zip';
@@ -73,6 +82,20 @@ require __DIR__ . '/vendor/autoload.php';
 // 	'G:\Github\Tools\images\a\b\2.png'
 // ]);
 
+// XML转数组
+// $res = devkeep\Tools\Tools::xmlToArray()
+// var_dump($res);
+
+// GET
+// $res = devkeep\Tools\Tools::get('http://www.baidu.com');
+// var_dump($res);
+
+// POST
+// $res = devkeep\Tools\Tools::post('http://www.baidu.com', ['name'=>'xxx']);
+// var_dump($res);
+
+// 文件打包下载
+// devkeep\Tools\Tools::addZip()
 
 // // 压缩包解压
 // $res = devkeep\Tools\Tools::unZip('xxx.zip', './xxx');
@@ -81,12 +104,12 @@ require __DIR__ . '/vendor/autoload.php';
 // // 文件下载
 // devkeep\Tools\Tools::download('G:\Github\Tools\images\a\b\2.png');
 
-// // 发送邮件
+// 发送邮件
 // $res = devkeep\Tools\Tools::sendMail([
 // 	'host' => 'smtp.aliyun.com',
 // 	'port' => 465,
 // 	'username' => 'devkeep@aliyun.com',
-// 	'password' => 'xxxx',
+// 	'password' => '',
 // 	'address' => 'devkeep@aliyun.com',
 // 	'title' => '测试邮件',
 // ], [
@@ -103,5 +126,5 @@ require __DIR__ . '/vendor/autoload.php';
 // 	['标题二', '2.00', '2KG'],
 // ], 'abc');
 
-// // 生成二维码(第二个参数可选，输出或保存)
+// 生成二维码(第二个参数可选，输出或保存)
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
