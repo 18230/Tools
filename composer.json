@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.0",
         "phpoffice/phpexcel": "1.8.2",
         "phpmailer/phpmailer": "6.1.5"
     },
