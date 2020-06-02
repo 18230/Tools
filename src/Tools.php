@@ -103,6 +103,41 @@ class Tools
     }
 
     /**
+     * 根据子级找父顶级
+     * 
+     * @param array $input 需查找的二维数组
+     * @param array $id 子级ID
+     * @return array
+     */
+    static public function parentFind(array $input, $id, array $res = [], string $childField = 'id', string $parentField = 'pid'): array
+    {
+        $pid = -1;
+
+        foreach ($input as $key => $val) 
+        {
+            if($val[$childField] == $id)
+            {
+                $pid = $val[$parentField];
+                $res = $val;
+                unset($input[$key]);
+                break;
+            }
+        }
+
+        foreach ($input as $key => $val) 
+        {
+            if($val[$childField] == $pid)
+            {
+                $res = self::parentFind($input, $val[$childField], $val, $childField, $parentField);
+                break;
+            }
+        }
+
+        return $res;
+    }
+
+
+    /**
      * 排列组合
      * 
      * @param array $input 排列的数组
