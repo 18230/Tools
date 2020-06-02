@@ -26,6 +26,9 @@ devkeep\Tools\Tools::toArray()
 // 无限级归类 
 devkeep\Tools\Tools::tree()
 
+// 通过子级查找父顶级
+devkeep\Tools\Tools::parentFind()
+
 // 排列组合（适用多规格SKU生成）
 devkeep\Tools\Tools::arrayArrange()
 
