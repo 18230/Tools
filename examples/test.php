@@ -146,3 +146,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 // 生成二维码(第二个参数可选，输出或保存)
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
+
+// 大文件分片上传
+// $obj = new devkeep\Tools\Block($_FILES['file']['tmp_name'], './upload', '123.mp4', $_POST['total_num'], $_POST['num']);
+// $res = $obj->returnResult();
+// var_dump($res);
