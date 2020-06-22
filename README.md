@@ -164,6 +164,12 @@ $res = devkeep\Tools\Tools::sendMail([
 	'body' => '这是一个邮件'
 ]);
 var_dump($res);
+
+// 大文件分片上传
+$obj = new devkeep\Tools\Block($_FILES['file']['tmp_name'], './upload', '123.mp4', $_POST['total_num'], $_POST['num']);
+$res = $obj->returnResult();
+var_dump($res);
+
 ```
 
 欢迎`Star`，欢迎`Fork`
