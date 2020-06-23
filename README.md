@@ -66,7 +66,10 @@ devkeep\Tools\Tools::exportExcel()
 devkeep\Tools\Tools::sendMail()
 
 // 生成二维码
-devkeep\Tools\Tools::qrcode();
+devkeep\Tools\Tools::qrcode()
+
+// 文件分块上传(支持10G以上大文件)
+devkeep\Tools\Block()
 ```
 
 ## 实例
