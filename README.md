@@ -169,9 +169,15 @@ $res = devkeep\Tools\Tools::sendMail([
 var_dump($res);
 
 // 大文件分片上传
-$obj = new devkeep\Tools\Block($_FILES['file']['tmp_name'], './upload', '123.mp4', $_POST['total_num'], $_POST['num']);
+$obj = new \devkeep\Tools\Block([
+    'tmpPath'   => $_FILES['file']['tmp_name'],
+    'filePath'  => $filePath,
+    'fileSize'  => $fileSize,
+    'num'       => $num,
+    'totalNum'  => $totalNum
+]);
 $res = $obj->returnResult();
-var_dump($res);
+echo $res;
 
 ```
 

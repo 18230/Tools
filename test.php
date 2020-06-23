@@ -39,6 +39,7 @@ require __DIR__ . '/vendor/autoload.php';
 // echo '<pre>';
 // print_r($res);
 
+
 // 根据子级找父顶级
 // $res = devkeep\Tools\Tools::parentFind([
 // 	['id' => 1, 'pid' => 0],
@@ -54,6 +55,7 @@ require __DIR__ . '/vendor/autoload.php';
 // ], 12);
 // echo '<pre>';
 // print_r($res);
+
 
 // 排列组合（适用多规格商品SKU生成）
 // $res = devkeep\Tools\Tools::arrayArrange([
@@ -145,7 +147,13 @@ require __DIR__ . '/vendor/autoload.php';
 // 生成二维码(第二个参数可选，输出或保存)
 // devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
 
-// 大文件分片上传
-// $obj = new devkeep\Tools\Block($_FILES['file']['tmp_name'], './upload', '123.mp4', $_POST['total_num'], $_POST['num']);
+// 大文件分块上传
+// $obj = new \devkeep\Tools\Block([
+//     'tmpPath'   => $_FILES['file']['tmp_name'],
+//     'filePath'  => $filePath,
+//     'fileSize'  => $fileSize,
+//     'num'       => $num,
+//     'totalNum'  => $totalNum
+// ]);
 // $res = $obj->returnResult();
-// var_dump($res);
+// echo $res;

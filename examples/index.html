@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>分片上传案例</title>
+    <title>文件分片上传示例</title>
     <link rel="stylesheet" href="http://zui.sexy/dist/css/zui.min.css" rel="external nofollow">
 </head>
 
@@ -24,6 +24,12 @@
     
     <script type="text/javascript">
 
+        // ID
+        function genID(length)
+        {
+            return Number(Math.random().toString().substr(3,length) + Date.now()).toString(36);
+        }
+
         $('.btn-primary').click(function () 
         {
             // 文件详情
@@ -37,37 +43,68 @@
             let start = 0;
             let end = 0;
 
-            for (let i = 1; i <= totalNum; i++) 
-            {
-                end = blockSize * i;
+            // 随机ID
+            let uuid = genID();
 
-                if (end > fileSize) 
-                {
-                    end = fileSize;
-                }
 
-                let block = file.slice(start, end);
-                start = end;
-                let fd = new FormData();
-
-                fd.append('file', block);
-                fd.append('name', fileName);
-                fd.append('num', i);
-                fd.append('total_num', totalNum);
-                
-                $.ajax({
-                    url: "/test.php",
-                    type: "POST",
-                    data: fd,
-                    async: false, // 此处同步上传，保证顺序
-                    processData: false,
-                    contentType: false,
-                    success: (res) => {
-                        console.log('res_' + i + ": " + res);
-                    }
-                })
-            }
+            request(1, blockSize, file, fileSize, totalNum, start, uuid, fileName);
         });
+
+
+
+        function request(index, blockSize, file, fileSize, totalNum, start, uuid, fileName)
+        {
+            if(index > totalNum)
+            {
+                return false;
+            }
+
+            end = blockSize * index;
+
+            // 校验是否超过文件大小
+            if (end > fileSize) 
+            {
+                end = fileSize;
+            }
+
+            // 文件块拆分
+            let block = file.slice(start, end);
+            start = end;
+            let fd = new FormData();
+
+            fd.append('uuid', uuid);
+            fd.append('file', block);
+            fd.append('fileName', fileName);
+            fd.append('num', index);
+            fd.append('totalNum', totalNum);
+            fd.append('fileSize', fileSize);
+            
+            $.ajax({
+                url: "/api/index/upload/",
+                type: "POST",
+                data: fd,
+                async: true,
+                processData: false,
+                contentType: false,
+                success: (res) => {
+
+                    console.log(res);
+
+                    if(-1 == res)
+                    {
+                        index = index + 1;
+
+                        arguments.callee(index, blockSize, file, fileSize, totalNum, start, uuid, fileName);
+                    }
+
+                    if(1 == res)
+                    {
+                        alert('ok');
+                    }
+                }
+            })
+        }
+
     </script>
 </body>
 
