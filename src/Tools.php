@@ -411,26 +411,55 @@ class Tools
      */
     static public function download(string $filename, $refilename = null)
     {
+        // 验证文件
         if(!is_file($filename)||!is_readable($filename)) 
         {
             return false;
         }
 
+        // 获取文件大小
+        $fileSize = filesize($filename);
+
+        // 重命名
+        !isset($refilename) && $refilename = $filename;
+
         // 字节流
         header('Content-Type:application/octet-stream');
         header('Accept-Ranges: bytes');
- 
-        // 文件大小
-        header('Accept-Length: '.filesize($filename));
-
-        // 文件重命名
-        !isset($refilename) && $refilename = $filename;
- 
-        // 重命名
+        header('Accept-Length: ' . $fileSize);
         header('Content-Disposition: attachment;filename='.basename($refilename));
  
-        // 读取内容
-        readfile($filename);
+        // 校验是否限速(超过1M自动限速,同时下载速度设为1M)
+        $limit = 1 * 1024 * 1024;
+
+        if( $fileSize <= $limit )
+        {
+            readfile($filename);
+        }
+        else
+        {
+            // 读取文件资源
+            $file = fopen($filename, 'rb');
+
+            // 强制结束缓冲并输出
+            ob_end_clean();
+            ob_implicit_flush();
+            header('X-Accel-Buffering: no');
+
+            // 读取位置标
+            $count = 0;
+
+            // 下载
+            while (!feof($file) && $fileSize - $count > 0) 
+            {
+                $res = fread($file, $limit);
+                $count += $limit;
+                echo $res;
+                sleep(1);
+            }
+
+            fclose($file);
+        }   
 
         exit();
     }
