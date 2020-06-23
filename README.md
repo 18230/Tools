@@ -56,7 +56,7 @@ devkeep\Tools\Tools::addZip()
 // 压缩包解压
 devkeep\Tools\Tools::unZip()
 
-// 文件下载
+// 文件下载(可限速)
 devkeep\Tools\Tools::download()
 
 // 导出excel
