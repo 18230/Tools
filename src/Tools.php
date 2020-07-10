@@ -255,6 +255,31 @@ class Tools
     }
 
     /**
+     * 取两坐标距离
+     *
+     * @param float $lng1 经度1
+     * @param float $lat1 纬度1
+     * @param float $lng2 经度2
+     * @param float $lat2 纬度2
+     *
+     * @return float
+     */
+    static public function getDistance(float $lng1, float $lat1, float $lng2, float $lat2): float
+    {
+        $radLat1 = deg2rad($lat1);
+        $radLat2 = deg2rad($lat2);
+        $radLng1 = deg2rad($lng1);
+        $radLng2 = deg2rad($lng2);
+     
+        $a = $radLat1 - $radLat2;
+        $b = $radLng1 - $radLng2;
+     
+        $s = 2 * asin(sqrt(pow(sin($a / 2), 2) + cos($radLat1) * cos($radLat2) * pow(sin($b / 2), 2))) * 6378.137 * 1000;
+         
+        return $s;
+    }
+
+    /**
      * get请求
      *
      * @param string $url URL地址

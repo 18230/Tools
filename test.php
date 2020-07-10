@@ -157,3 +157,6 @@ require __DIR__ . '/vendor/autoload.php';
 // ]);
 // $res = $obj->returnResult();
 // echo $res;
+
+// 取两坐标距离
+// echo devkeep\Tools\Tools::getDistance(120.622630, 31.139585, 120.513496, 31.262356);
