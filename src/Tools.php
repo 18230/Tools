@@ -37,7 +37,7 @@ class Tools
      *
      * @return string
      */
-    static public function format(int $input, int $number = 2): string
+    static public function format($input, int $number = 2): string
     {
         return sprintf("%." . $number . "f", $input);
     }
