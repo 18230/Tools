@@ -283,11 +283,11 @@ class Tools
      * get请求
      *
      * @param string $url URL地址
-     * @param string $header header头
+     * @param string $header 请求头
      *
      * @return mixed
      */
-    static public function get(string $url, $header = null)
+    static public function get($url, $header = null)
     {
         $ch = curl_init();
 
@@ -298,6 +298,8 @@ class Tools
 
         curl_setopt($ch,CURLOPT_URL, $url);
         curl_setopt($ch,CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
@@ -311,20 +313,20 @@ class Tools
      *
      * @param string $url URL地址
      * @param string $param 参数
-     * @param string $dataType 数据类型
+     * @param string $header 请求头
      *
      * @return mixed
      */
-    static public function post(string $url, $param = '', string $dataType = 'form')
+    static public function post($url, $param, $header = null)
     {
-        $dataTypeArr = [
-            'form' => ['content-type: application/x-www-form-urlencoded;charset=UTF-8'],
-            'json' => ['Content-Type: application/json;charset=utf-8'],
-        ];
-
         $ch = curl_init();
+
+        if(isset($header))
+        {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+        }
+    
         curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $dataTypeArr[$dataType]);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
@@ -336,7 +338,6 @@ class Tools
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
         $result = curl_exec($ch);
         curl_close($ch);
-        $result = trim($result, "\xEF\xBB\xBF");
         return $result;
     }
 
