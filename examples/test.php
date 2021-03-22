@@ -39,24 +39,6 @@ require __DIR__ . '/vendor/autoload.php';
 // echo '<pre>';
 // print_r($res);
 
-
-// 根据子级找父顶级
-// $res = devkeep\Tools\Tools::parentFind([
-// 	['id' => 1, 'pid' => 0],
-// 	['id' => 2, 'pid' => 0],
-// 	['id' => 3, 'pid' => 1],
-// 	['id' => 4, 'pid' => 1],
-// 	['id' => 5, 'pid' => 2],
-// 	['id' => 6, 'pid' => 2],
-// 	['id' => 9, 'pid' => 6],
-// 	['id' => 10, 'pid' => 9],
-// 	['id' => 11, 'pid' => 10],
-// 	['id' => 12, 'pid' => 3],
-// ], 12);
-// echo '<pre>';
-// print_r($res);
-
-
 // 排列组合（适用多规格商品SKU生成）
 // $res = devkeep\Tools\Tools::arrayArrange([
 //     [
