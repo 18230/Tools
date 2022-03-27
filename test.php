@@ -2,12 +2,24 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// // 获取系统类型
+// 生成唯一UUID
+// $res = devkeep\Tools\Tools::UUID();
+// var_dump($res);
+
+// 获取真实IP
+// $res = devkeep\Tools\Tools::getIP();
+// var_dump($res);
+
+// 获取系统类型
 // $res = devkeep\Tools\Tools::getOS();
 // var_dump($res);
 
 // 保留两位小数
 // $res = devkeep\Tools\Tools::format(100, 2);
+// var_dump($res);
+
+// 时间格式化
+// $res = devkeep\Tools\Tools::formatDate(time());
 // var_dump($res);
  
 // 对象转数组

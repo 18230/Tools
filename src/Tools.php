@@ -30,6 +30,55 @@ class Tools
     }
 
     /**
+     * 获取UUID
+     * @return string
+     */
+    static public function UUID(): string
+    {     
+        $data = $_SERVER['REQUEST_TIME'];
+        $data .= $_SERVER['HTTP_USER_AGENT'];
+        $data .= $_SERVER['LOCAL_ADDR'];
+        $data .= $_SERVER['LOCAL_PORT'];
+        $data .= $_SERVER['REMOTE_ADDR'];
+        $data .= $_SERVER['REMOTE_PORT'];
+        $uuid = strtoupper(md5(uniqid() . mt_rand() . $data));
+        return $uuid;
+    }
+
+    /**
+     * 获取IP地址
+     * @return string
+     */
+    static public function getIP(): string
+    {
+        if ($_SERVER['HTTP_CLIENT_IP']) 
+        {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        if ($_SERVER['HTTP_X_REAL_IP']) 
+        {
+            $ip = $_SERVER['HTTP_X_REAL_IP'];
+        } 
+        else if ($_SERVER['HTTP_X_FORWARDED_FOR']) 
+        {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            $ips = explode(',', $ip);
+            $ip = trim(current($ips));
+        } 
+        else if ($_SERVER['REMOTE_ADDR']) 
+        {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        } 
+        else 
+        {
+            $ip = '0.0.0.0';
+        }
+
+        return $ip;
+    }
+
+    /**
      * format 保留两位小数
      *
      * @param int $input 数值
@@ -40,6 +89,41 @@ class Tools
     static public function format($input, int $number = 2): string
     {
         return sprintf("%." . $number . "f", $input);
+    }
+
+
+    /**
+     * formatDate 时间格式化 
+     *
+     * @param int $time 时间
+     *
+     * @return string
+     */
+    static public function formatDate(int $time): string
+    {
+        $t = time() - $time;
+
+        $f = [
+            '31536000' => '年',
+            '2592000' => '个月',
+            '604800' => '星期',
+            '86400' => '天',
+            '3600' => '小时',
+            '60' => '分钟',
+            '1' =>'秒'
+        ];
+
+        foreach ($f as $k => $v)
+        {
+            if (0 != $c = floor($t / (int)$k)) 
+            {
+                return $c . $v . '前';
+            }
+            else
+            {
+                return '刚刚';
+            }
+        }
     }
 
     /**
