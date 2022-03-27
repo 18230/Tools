@@ -17,6 +17,12 @@ composer require devkeep/tools
 // 获取系统类型
 devkeep\Tools\Tools::getOS()
 
+// 获取IP
+devkeep\Tools\Tools::getIP()
+
+// 生成UUID
+devkeep\Tools\Tools::UUID()
+
 // 保留小数
 devkeep\Tools\Tools::format()
 
