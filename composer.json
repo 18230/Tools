@@ -12,6 +12,8 @@
     ],
     "require": {
         "php": ">=7.0",
+        "ext-curl": "*",
+        "ext-openssl": "*",
         "phpoffice/phpexcel": "1.8.2",
         "phpmailer/phpmailer": "6.1.6"
     },

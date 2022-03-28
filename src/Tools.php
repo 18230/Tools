@@ -30,10 +30,10 @@ class Tools
     }
 
     /**
-     * 获取UUID
+     * uuid
      * @return string
      */
-    static public function UUID(): string
+    static public function uuid(): string
     {     
         $data = $_SERVER['REQUEST_TIME'];
         $data .= $_SERVER['HTTP_USER_AGENT'];
@@ -301,31 +301,6 @@ class Tools
         $str .= '</xml>';
 
         return $str;
-    }
-
-    /**
-     * 取两坐标距离
-     *
-     * @param float $lng1 经度1
-     * @param float $lat1 纬度1
-     * @param float $lng2 经度2
-     * @param float $lat2 纬度2
-     *
-     * @return float
-     */
-    static public function getDistance(float $lng1, float $lat1, float $lng2, float $lat2): float
-    {
-        $radLat1 = deg2rad($lat1);
-        $radLat2 = deg2rad($lat2);
-        $radLng1 = deg2rad($lng1);
-        $radLng2 = deg2rad($lng2);
-     
-        $a = $radLat1 - $radLat2;
-        $b = $radLng1 - $radLng2;
-     
-        $s = 2 * asin(sqrt(pow(sin($a / 2), 2) + cos($radLat1) * cos($radLat2) * pow(sin($b / 2), 2))) * 6378.137 * 1000;
-         
-        return $s;
     }
 
     /**
@@ -688,7 +663,7 @@ class Tools
         // 是否携带附件
         if (isset($data['attachment'])) 
         { 
-            foreach ($attachment as $file) 
+            foreach ($data['attachment'] as $file) 
             {
                 is_file($file) && $mail->AddAttachment($file);
             }
@@ -698,22 +673,20 @@ class Tools
         return $mail->Send() ? true : $mail->ErrorInfo;
     }
 
-    /**
-     * 生成二维码
+    // /**
+    //  * 生成二维码
+    //  * @param array  $text 二维码内容
+    //  * @param array  $outfile 文件
+    //  * @param array  $level 纠错级别
+    //  * @param array  $size 二维码大小
+    //  * @param array  $margin 边距
+    //  * @param array  $saveandprint
+    //  * @return void
+    //  */
+    // static public function qrcode(string $text, $outfile = false, string $level = QR_ECLEVEL_L, int $size = 6, int $margin = 2, bool $saveandprint = false)
+    // {
+    //     QRcode::png($text, $outfile, $level, $size, $margin, $saveandprint);
 
-     * @param array  $text 二维码内容
-     * @param array  $outfile 文件
-     * @param array  $level 纠错级别
-     * @param array  $size 二维码大小
-     * @param array  $margin 边距
-     * @param array  $saveandprint
-     *
-     * @return void
-     */
-    static public function qrcode(string $text, $outfile = false, string $level = QR_ECLEVEL_L, int $size = 6, int $margin = 2, bool $saveandprint = false)
-    {
-        QRcode::png($text, $outfile, $level, $size, $margin, $saveandprint);
-
-        exit();
-    }
+    //     exit();
+    // }
 }

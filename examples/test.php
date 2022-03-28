@@ -2,12 +2,24 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-// // 获取系统类型
+// 生成唯一UUID
+// $res = devkeep\Tools\Tools::uuid();
+// var_dump($res);
+
+// 获取真实IP
+// $res = devkeep\Tools\Tools::getIP();
+// var_dump($res);
+
+// 获取系统类型
 // $res = devkeep\Tools\Tools::getOS();
 // var_dump($res);
 
 // 保留两位小数
 // $res = devkeep\Tools\Tools::format(100, 2);
+// var_dump($res);
+
+// 时间格式化
+// $res = devkeep\Tools\Tools::formatDate(time());
 // var_dump($res);
  
 // 对象转数组
@@ -125,9 +137,6 @@ require __DIR__ . '/vendor/autoload.php';
 // 	['标题一', '1.00', '1KG'],
 // 	['标题二', '2.00', '2KG'],
 // ], 'abc');
-
-// 生成二维码(第二个参数可选，输出或保存)
-// devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
 
 // 大文件分块上传
 // $obj = new \devkeep\Tools\Block([

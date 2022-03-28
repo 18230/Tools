@@ -21,7 +21,7 @@ devkeep\Tools\Tools::getOS()
 devkeep\Tools\Tools::getIP()
 
 // 生成UUID
-devkeep\Tools\Tools::UUID()
+devkeep\Tools\Tools::uuid()
 
 // 保留小数
 devkeep\Tools\Tools::format()
@@ -47,9 +47,6 @@ devkeep\Tools\Tools::arrayToXml()
 // XML转数组
 devkeep\Tools\Tools::xmlToArray()
 
-// 取两经纬度之间的距离
-devkeep\Tools\Tools::getDistance()
-
 // GET请求
 devkeep\Tools\Tools::get()
 
@@ -70,9 +67,6 @@ devkeep\Tools\Tools::exportExcel()
 
 // 发送邮件
 devkeep\Tools\Tools::sendMail()
-
-// 生成二维码
-devkeep\Tools\Tools::qrcode()
 
 // 文件分块上传(支持10G以上大文件)
 devkeep\Tools\Block()
