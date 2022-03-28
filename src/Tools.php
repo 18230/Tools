@@ -35,12 +35,12 @@ class Tools
      */
     static public function uuid(): string
     {     
-        $data = $_SERVER['REQUEST_TIME'];
-        $data .= $_SERVER['HTTP_USER_AGENT'];
-        $data .= $_SERVER['LOCAL_ADDR'];
-        $data .= $_SERVER['LOCAL_PORT'];
-        $data .= $_SERVER['REMOTE_ADDR'];
-        $data .= $_SERVER['REMOTE_PORT'];
+        $data = isset($_SERVER['REQUEST_TIME']) ? $_SERVER['REQUEST_TIME'] : '';
+        $data .= isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+        $data .= isset($_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '';
+        $data .= isset($_SERVER['SERVERL_PORT']) ? $_SERVER['SERVERL_PORT'] : '';
+        $data .= isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+        $data .= isset($_SERVER['REMOTE_PORT']) ? $_SERVER['REMOTE_PORT'] : '';
         $uuid = strtoupper(md5(uniqid() . mt_rand() . $data));
         return $uuid;
     }
@@ -51,22 +51,22 @@ class Tools
      */
     static public function getIP(): string
     {
-        if ($_SERVER['HTTP_CLIENT_IP']) 
+        if (isset($_SERVER['HTTP_CLIENT_IP'])) 
         {
             $ip = $_SERVER['HTTP_CLIENT_IP'];
         }
 
-        if ($_SERVER['HTTP_X_REAL_IP']) 
+        if (isset($_SERVER['HTTP_X_REAL_IP']))
         {
             $ip = $_SERVER['HTTP_X_REAL_IP'];
         } 
-        else if ($_SERVER['HTTP_X_FORWARDED_FOR']) 
+        else if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) 
         {
             $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
             $ips = explode(',', $ip);
             $ip = trim(current($ips));
         } 
-        else if ($_SERVER['REMOTE_ADDR']) 
+        else if (isset($_SERVER['REMOTE_ADDR'])) 
         {
             $ip = $_SERVER['REMOTE_ADDR'];
         } 
