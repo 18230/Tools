@@ -304,6 +304,31 @@ class Tools
     }
 
     /**
+     * 取两经纬度之间距离
+     *
+     * @param string $lng1
+     * @param string $lat1
+     * @param string $lng2
+     * @param string $lng2
+     *
+     * @return mixed
+     */
+    static public function getDistance($lng1, $lat1, $lng2, $lat2)
+    {
+        $radLat1 = deg2rad($lat1);
+        $radLat2 = deg2rad($lat2);
+        $radLng1 = deg2rad($lng1);
+        $radLng2 = deg2rad($lng2);
+    
+        $a = $radLat1 - $radLat2;
+        $b = $radLng1 - $radLng2;
+    
+        $s = 2 * asin(sqrt(pow(sin($a / 2), 2) + cos($radLat1) * cos($radLat2) * pow(sin($b / 2), 2))) * 6378.137 * 1000;
+        
+        return $s;
+    }
+
+    /**
      * get请求
      *
      * @param string $url URL地址

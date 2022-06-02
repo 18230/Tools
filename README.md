@@ -47,6 +47,9 @@ devkeep\Tools\Tools::arrayToXml()
 // XML转数组
 devkeep\Tools\Tools::xmlToArray()
 
+// 取两经纬度之间距离
+devkeep\Tools\Tools::getDistance()
+
 // GET请求
 devkeep\Tools\Tools::get()
 
