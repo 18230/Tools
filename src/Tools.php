@@ -306,14 +306,14 @@ class Tools
     /**
      * 取两经纬度之间距离
      *
-     * @param string $lng1
-     * @param string $lat1
-     * @param string $lng2
-     * @param string $lng2
+     * @param float $lng1
+     * @param float $lat1
+     * @param float $lng2
+     * @param float $lng2
      *
      * @return mixed
      */
-    static public function getDistance($lng1, $lat1, $lng2, $lat2)
+    static public function getDistance(float $lng1, float $lat1, float $lng2, float $lat2)
     {
         $radLat1 = deg2rad($lat1);
         $radLat2 = deg2rad($lat2);
