@@ -62,7 +62,7 @@ class Block
 		if( $this->params['num'] == $this->params['totalNum'] )
 		{
 			// 文件校验
-			return file_exists($this->params['filePath']) && filesize($this->params['filePath']) == $this->params['fileSize'] ? 1 : 0;
+			return file_exists($this->params['filePath']) && filesize($this->params['filePath']) == $this->params['fileSize'] ? 0 : 1;
 		}
 		else
 		{
