@@ -50,12 +50,6 @@ devkeep\Tools\Tools::xmlToArray()
 // 取两经纬度之间距离
 devkeep\Tools\Tools::getDistance()
 
-// GET请求
-devkeep\Tools\Tools::get()
-
-// POST请求
-devkeep\Tools\Tools::post()
-
 // 文件打包下载
 devkeep\Tools\Tools::addZip()
 
@@ -64,12 +58,6 @@ devkeep\Tools\Tools::unZip()
 
 // 文件下载(可限速)
 devkeep\Tools\Tools::download()
-
-// 导出excel
-devkeep\Tools\Tools::exportExcel()
-
-// 发送邮件
-devkeep\Tools\Tools::sendMail()
 
 // 文件分块上传(支持10G以上大文件)
 devkeep\Tools\Block()
