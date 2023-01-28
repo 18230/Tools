@@ -70,7 +70,6 @@ devkeep\Tools\Block()
 ```php
 // 保留小数
 $res = devkeep\Tools\Tools::format(100, 2);
-
 // 100.00
 
 // 二维数组排序
@@ -79,12 +78,6 @@ $res = devkeep\Tools\Tools::arrayMultiSort([
     ['id' => 2],
     ['id' => 3],
 ], 'id', 'desc');
-
-// [
-//     ['id' => 3],
-//     ['id' => 2],
-//     ['id' => 1],
-// ]
 
 // tree归类（非递归）
 $res = devkeep\Tools\Tools::tree([
@@ -105,70 +98,6 @@ $res = devkeep\Tools\Tools::tree([
 	],
 ]);
 
-// Array
-// (
-//     [0] => Array
-//         (
-//             [id] => 1
-//             [pid] => 0
-//             [title] => title
-//             [child] => Array
-//                 (
-//                     [0] => Array
-//                         (
-//                             [id] => 3
-//                             [pid] => 1
-//                             [title] => title3
-//                             [child] => []
-//                         )
-//                     [1] => Array
-//                         (
-//                             [id] => 4
-//                             [pid] => 1
-//                             [title] => title4
-//                             [child] => []
-//                         )
-//                 )
-//         )
-// )
-
-
-
-// 导出Excel
-devkeep\Tools\Tools::exportExcel(['标题','价格', '重量'], [
-	['标题一', '1.00', '1KG'],
-	['标题二', '2.00', '2KG'],
-], 'abc');
-
-// 生成二维码
-devkeep\Tools\Tools::qrcode('http://www.baidu.com', false, 'L', 6, 2);
-
-// 发送邮件
-$res = devkeep\Tools\Tools::sendMail([
-	'host' => 'smtp.aliyun.com',
-	'port' => 465,
-	'username' => 'devkeep@aliyun.com',
-	'password' => 'xxxx',
-	'address' => 'devkeep@aliyun.com',
-	'title' => '测试邮件',
-], [
-	'mail' => '363927173@qq.com',
-	'name' => '张三',
-	'subject' => '主题',
-	'body' => '这是一个邮件'
-]);
-var_dump($res);
-
-// 大文件分片上传
-$obj = new \devkeep\Tools\Block([
-    'tmpPath'   => $_FILES['file']['tmp_name'],
-    'filePath'  => $filePath,
-    'fileSize'  => $fileSize,
-    'num'       => $num,
-    'totalNum'  => $totalNum
-]);
-$res = $obj->returnResult();
-echo $res;
 
 ```
 
